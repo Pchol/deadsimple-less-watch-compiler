@@ -18,7 +18,7 @@
     "start": "yarn run build && node ./dist/less-watch-compiler.js"
   },
   "repository": {
-    "url": "https://github.com/jonycheung/deadsimple-less-watch-compiler.git",
+    "url": "https://github.com/Pchol/deadsimple-less-watch-compiler.git",
     "type": "git"
   },
   "bin": {
@@ -58,9 +58,9 @@
   "author": "Jony Cheung",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jonycheung/deadsimple-less-watch-compiler/issues"
+    "url": "https://github.com/Pchol/deadsimple-less-watch-compiler/issues"
   },
-  "homepage": "https://github.com/jonycheung/deadsimple-less-watch-compiler",
+  "homepage": "https://github.com/Pchol/deadsimple-less-watch-compiler",
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
