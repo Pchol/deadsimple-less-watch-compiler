@@ -91,14 +91,15 @@ define(function (require) {
     compileCSS: function (file, test) {
       var dirname = path.dirname(file).replace(lessWatchCompilerUtilsModule.config.watchFolder, "") + "/";
       var filename = path.basename(file, path.extname(file));
-      var minifiedFlag = (lessWatchCompilerUtilsModule.config.minified === false) ? '' : ' -x';
+      var minifiedFlag = (lessWatchCompilerUtilsModule.config.minified) ? ' -x' : '';
       var sourceMap = (lessWatchCompilerUtilsModule.config.sourceMap) ? ' --source-map' : '';
       var plugins = (lessWatchCompilerUtilsModule.config.plugins) ? ' --' + lessWatchCompilerUtilsModule.config.plugins.split(',').join(' --') : '';
-      var outputFilePath = lessWatchCompilerUtilsModule.config.outputFolder + '/' + filename.replace(/\s+/g, '\\ ') +
-        (lessWatchCompilerUtilsModule.config.minified ? '.min' : '') + '.css';
+
+      var outputFilePath = file.replace(/\s+/g, '\\ ').slice(0, -4) + 'css';
+
       var command = 'lessc' + sourceMap + minifiedFlag + plugins + ' ' + file.replace(/\s+/g, '\\ ') + ' ' + outputFilePath;
       // Run the command
-      // console.log(command)
+      console.error(command);
       if (!test)
         exec(command, function (error, stdout, stderr) {
           if (error !== null)
@@ -195,7 +196,7 @@ define(function (require) {
       if (filelist.indexOf(f) !== -1) return;
       filelist[filelist.length] = f;
 
-      if (f.indexOf('.') !== -1) {
+      if (f.indexOf('.less') !== -1) {
         fileimportlist[f] = fileSearch.findLessImportsInFile(f);
       }
       lessWatchCompilerUtilsModule.setupWatcher(f, files, options, watchCallback);
