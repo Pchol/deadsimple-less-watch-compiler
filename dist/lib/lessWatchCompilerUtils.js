@@ -167,7 +167,7 @@ define(function (require) {
                       fileimportlist[file] = fileSearch.findLessImportsInFile(file);
                       watchCallback(file, stat, null, fileimportlist);
                       files[file] = stat;
-                      fileWatcher(file);
+                      lessWatchCompilerUtilsModule.fileWatcher(file, files, options, filelist, fileimportlist, watchCallback);
                     }
                   });
                 });
