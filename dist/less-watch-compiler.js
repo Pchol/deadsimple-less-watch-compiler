@@ -111,7 +111,6 @@ function init() {
         }
       }
       if (!importedFile) {
-        console.log(fileimportlist);
         var compileResult = lessWatchCompilerUtils.compileCSS(mainFilePath || f);
         console.log('The file: ' + f + ' was changed. Recompiling ' + compileResult.outputFilePath + ' at ' + lessWatchCompilerUtils.getDateTime());
       }
