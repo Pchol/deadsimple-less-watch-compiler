@@ -116,7 +116,7 @@ function init(){
         var importedFile = false;
         for (var i in fileimportlist){
           for (var k in fileimportlist[i]){
-            if (f.substring(lessWatchCompilerUtils.config.watchFolder.length+1) == fileimportlist[i][k]){
+              if (f.substring(lessWatchCompilerUtils.config.watchFolder.length + 1, f.length - 5) == fileimportlist[i][k]) {
               var compileResult = lessWatchCompilerUtils.compileCSS(i);
               console.log('The file: ' + i + ' was changed because '+f+' is specified as an import.  Recompiling '+compileResult.outputFilePath+' at ' + lessWatchCompilerUtils.getDateTime());
               importedFile = true;
@@ -124,6 +124,7 @@ function init(){
           }
         }
         if (!importedFile){
+          console.log(fileimportlist);
           var compileResult = lessWatchCompilerUtils.compileCSS(mainFilePath || f);
           console.log('The file: ' + f + ' was changed. Recompiling '+compileResult.outputFilePath+' at ' + lessWatchCompilerUtils.getDateTime());
         }
