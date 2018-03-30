@@ -97,7 +97,7 @@ define(function (require) {
 
       var outputFilePath = file.replace(/\s+/g, '\\ ').slice(0, -4) + 'css';
 
-      var command = 'lessc' + sourceMap + minifiedFlag + plugins + ' ' + file.replace(/\s+/g, '\\ ') + ' ' + outputFilePath;
+      var command = 'lessc' + sourceMap + minifiedFlag + plugins + ' ' + file.replace(/\s+/g, '\\ ') + ' | postcss --use autoprefixer -o ' + outputFilePath;
       // Run the command
       console.error(command);
       if (!test)
